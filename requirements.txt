@@ -1,3 +1,4 @@
 redshift-connector==2.0.910
-pandas==2.0.2
+sqlalchemy-redshift
+pandas==1.5.3
 sqlalchemy==2.0.15
