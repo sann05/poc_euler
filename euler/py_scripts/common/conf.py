@@ -5,8 +5,8 @@ SCHEMA = 'public'
 
 PRODUCT_MASTER_TABLE = 'product_master'
 ADS_LOCAL_TABLES = {
-    'US': 'ads_us',
-    'UK': 'ads_uk',
+    'us': 'ads_us',
+    'uk': 'ads_uk',
     'online': 'ads_online'
 }
 ADS_COMBINED_TABLE = 'ads_combined'
