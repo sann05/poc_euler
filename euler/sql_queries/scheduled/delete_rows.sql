@@ -6,14 +6,14 @@ with common_ids as (
         id as ad_combined_id,
         fk_source_id
     from ads_combined
-    where lower(source) = '{locality}'
+    where source = '{locality}'
 ),
 
 ads_to_delete as  (
     select
         id as fk_source_id
     from ads_{locality}
-    where deleted_date > (select max(updated_date) from ads_combined where lower(source) = '{locality}' )
+    where deleted_date > coalesce ((select max(updated_date) from ads_combined where source = '{locality}' ), '1970-01-01')
 ),
 
 ids_to_delete as (

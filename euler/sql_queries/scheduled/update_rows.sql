@@ -9,8 +9,9 @@ with ads_local_to_update as (
         products,
         updated_date
     from ads_{locality}
-    wher
-        updated_date > (select max(updated_date) from ads_combined where source = '{locality}' )
+    where
+        updated_date > coalesce ((select max(updated_date) from ads_combined where source = '{locality}' ), '1970-01-01')
+        and deleted_date is null
 ),
 
 ads_combined_necessary_columns as (
@@ -20,7 +21,7 @@ ads_combined_necessary_columns as (
     from ads_combined
     where
         fk_source_id in (select fk_source_id from ads_local_to_update)
-        and lower(source) = '{locality}'
+        and source = '{locality}'
 ),
 
 ads_local_with_combined as (

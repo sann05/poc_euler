@@ -11,6 +11,7 @@ with ads_local_new as (
     from ads_{locality}
     where
         updated_date > coalesce ((select max(updated_date) from ads_combined where source = '{locality}' ), '1970-01-01')
+        and deleted_date is null
 ),
 
 max_id as (
@@ -27,7 +28,7 @@ ads_local_to_insert as (
     from ads_local_new
     cross join max_id
     where
-        fk_source_id not in (select fk_source_id from ads_combined where lower(source) = '{locality}')
+        fk_source_id not in (select fk_source_id from ads_combined where source = '{locality}')
 
 )
 
