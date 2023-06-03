@@ -13,8 +13,8 @@ def main():
             with conn.connection.cursor() as cur:
                 conn.connection.autocommit = False
                 for script in [
-                    # "delete_rows.sql",
-                    # "update_rows.sql",
+                    "delete_rows.sql",
+                    "update_rows.sql",
                     "insert_rows.sql"
                 ]:
                     script_path = os.path.join(
