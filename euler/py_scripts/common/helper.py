@@ -23,5 +23,5 @@ def write_df(df: pd.DataFrame, table, truncate=True):
             con=conn,
             index=False,
             chunksize=1000,
-            if_exists='replace')
+            if_exists='append')
 
