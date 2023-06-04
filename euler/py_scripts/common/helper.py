@@ -31,6 +31,26 @@ def get_connection():
     return create_engine(url=get_url()).connect()
 
 
+def recreate_tables():
+    with get_connection() as conn:
+        with conn.connection.cursor() as cur:
+            conn.connection.autocommit = False
+            script = "recreate_tables.sql"
+            script_path = os.path.join(
+                get_project_path(),
+                "sql_queries",
+                script
+            )
+            with open(script_path, 'r') as f:
+                script_parsed = f.read()
+                script_array = [s.strip() for s in
+                                script_parsed.split(';') if s.strip()]
+                print(f"Executing script {script}")
+                for st in script_array:
+                    cur.execute(st)
+                conn.connection.commit()
+
+
 def write_df(df: pd.DataFrame, table, truncate=True):
     with get_connection() as conn:
         if truncate:
