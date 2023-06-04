@@ -13,7 +13,7 @@ To be able run scripts add Redshift credentials to
 │   ├── ads_uk.csv
 │   ├── ads_us.csv
 │   └── product_master.csv
-├── py_scripts # control 
+├── py_scripts
 │   ├── __init__.py
 │   ├── common # helper python scritps 
 │   │   ├── __init__.py
