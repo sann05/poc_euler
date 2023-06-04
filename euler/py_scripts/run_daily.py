@@ -7,11 +7,11 @@ from euler.py_scripts.common.helper import get_project_path, get_connection
 def main():
     project_root_path = get_project_path()
     scripts_dir_path = 'sql_queries/scheduled/'
-    for locality, table_name in conf.ADS_LOCAL_TABLES.items():
-        with get_connection() as conn:
 
-            with conn.connection.cursor() as cur:
-                conn.connection.autocommit = False
+    with get_connection() as conn:
+        with conn.connection.cursor() as cur:
+            conn.connection.autocommit = False
+            for locality, table_name in conf.ADS_LOCAL_TABLES.items():
                 for script in [
                     "product_added.sql",
                     "delete_rows.sql",
@@ -31,7 +31,7 @@ def main():
                             f"Executing script {script} on table {table_name}")
                         for st in script_array:
                             cur.execute(st)
-                        conn.connection.commit()
+            conn.connection.commit()
 
 
 if __name__ == '__main__':

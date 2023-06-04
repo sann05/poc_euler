@@ -1,3 +1,4 @@
+drop table if exists temp_new_products;
 create temp table temp_new_products
 as
 select
