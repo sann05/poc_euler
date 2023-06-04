@@ -13,6 +13,7 @@ def main():
             with conn.connection.cursor() as cur:
                 conn.connection.autocommit = False
                 for script in [
+                    "product_added.sql",
                     "delete_rows.sql",
                     "update_rows.sql",
                     "insert_rows.sql"
@@ -24,8 +25,10 @@ def main():
                     )
                     with open(script_path, 'r') as f:
                         script_parsed = f.read().format(locality=locality)
-                        script_array = [s.strip() for s in script_parsed.split(';') if s.strip()]
-                        print(f"Executing script {script} on table {table_name}")
+                        script_array = [s.strip() for s in
+                                        script_parsed.split(';') if s.strip()]
+                        print(
+                            f"Executing script {script} on table {table_name}")
                         for st in script_array:
                             cur.execute(st)
                         conn.connection.commit()
