@@ -1,5 +1,5 @@
-id,product
-1,iPhone
-2,iPad
-3,Coke
-4,Pepsi
+id,product,updated_date
+1,iPhone,
+2,iPad,
+3,Coke,
+4,Pepsi,
