@@ -2,7 +2,9 @@
 
 ### Prerequisites
 
-To be able run scripts add Redshift credentials to
+1. Install all libraries listed in [requirements.txt](requirements.txt) via command 
+    <br> ```pip install -r requirements.txt```
+2. Add Redshift credentials to
 `REDSHIFT_LOGIN` and `REDSHIFT_PASSWORD` environment variables
 
 
