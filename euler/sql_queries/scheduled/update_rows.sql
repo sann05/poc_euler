@@ -51,6 +51,7 @@ select
     ad_combined_id,
     fk_source_id,
     '{locality}' as source,
+    date,
     updated_date
 from temp_ads_to_update_{locality};
 
