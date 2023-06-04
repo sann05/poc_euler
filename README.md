@@ -33,8 +33,8 @@ To be able run scripts add Redshift credentials to
     │   ├── 1_scenario_insertion.sql
     │   ├── 2_scenario_deletion.sql
     │   ├── 3_scenario_updation.sql
-    │   ├── 4_scenario_mixed.sql
-    │   └── 5_product_add.sql
+    │   ├── 4_product_add.sql
+    │   └── 5_scenario_mixed.sql
     └── validation # script for displaying current relationship between tables 
         └── show_relation.sql
 
