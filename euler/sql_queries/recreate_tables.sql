@@ -52,3 +52,13 @@ create table public.ads_order_mapping(
     product_id int not null,
     order_number int not null
 );
+
+
+create or replace function match_ratio(value_a anyelement, value_b anyelement)
+returns integer immutable
+as
+$$
+    from thefuzz import fuzz
+
+    return fuzz.partial_ratio(value_a, value_b)
+$$ language plpythonu;

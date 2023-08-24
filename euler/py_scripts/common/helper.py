@@ -31,6 +31,20 @@ def get_connection():
     return create_engine(url=get_url()).connect()
 
 
+def create_libraries():
+    with get_connection() as conn:
+        script = "create_library.sql"
+        script_path = os.path.join(
+            get_project_path(),
+            "sql_queries",
+            script
+        )
+        print(f"Executing script {script}")
+        with open(script_path, 'r') as f:
+            conn.execution_options(
+                isolation_level="AUTOCOMMIT").execute(f.read())
+
+
 def recreate_tables():
     with get_connection() as conn:
         with conn.connection.cursor() as cur:

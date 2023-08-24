@@ -37,7 +37,7 @@ ads_exploded_with_product_id as (
         ads_exploded.index as order_number
     from ads_exploded
     inner join temp_new_products as product_master
-	    on ads_exploded.product like '%' || product_master.product || '%'
+        on match_ratio(ads_exploded.product, product_master.product) > 70
 )
 
 select
